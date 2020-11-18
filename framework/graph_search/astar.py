@@ -75,8 +75,8 @@ class AStar(BestFirstSearch):
                   but still could be improved.
         """
         state = successor_node.state
-        open_node=self.open.get_node_by_state(state)
-        close_node=self.close.get_node_by_state(state)
+        open_node = self.open.get_node_by_state(state)
+        close_node = self.close.get_node_by_state(state)
         if not open_node and not close_node:
             self.open.push_node(successor_node)
         elif close_node:
