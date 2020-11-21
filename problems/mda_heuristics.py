@@ -49,8 +49,8 @@ class MDAMaxAirDistHeuristic(HeuristicFunction):
             return 0
 
         return max(self.cached_air_distance_calculator.get_air_distance_between_junctions(j1, j2)
-                   for j1 in self.problem.get_all_certain_junctions_in_remaining_ambulance_path(state)
-                   for j2 in self.problem.get_all_certain_junctions_in_remaining_ambulance_path(state)
+                   for j1 in all_certain_junctions_in_remaining_ambulance_path
+                   for j2 in all_certain_junctions_in_remaining_ambulance_path
                    if (j1 != j2))
 
 
@@ -143,11 +143,10 @@ class MDAMSTAirDistHeuristic(HeuristicFunction):
               `.size(weight='weight')`. Do not manually sum the edges' weights.
         """
         G = nx.Graph()
-        for v1 in junctions:
-            for v2 in junctions:
-                if v1 == v2:
-                    continue
-                G.add_edge(v1, v2, weight=self.cached_air_distance_calculator.get_air_distance_between_junctions(v1, v2))
+        for i in range(len(junctions)):
+            for j in range(i):
+                G.add_edge(junctions[i], junctions[j], weight=self.cached_air_distance_calculator.
+                           get_air_distance_between_junctions(junctions[i], junctions[j]))
         return nx.minimum_spanning_tree(G).size(weight='weight')
 
 

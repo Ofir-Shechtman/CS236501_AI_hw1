@@ -283,9 +283,8 @@ def multiple_objectives_mda_problem_experiments():
     optimal_distance_cost = res.solution_cost.distance_cost
     eps = 0.6
     max_distance_cost = (1 + eps) * optimal_distance_cost
-    get_dist_cost = lambda c: c.operator_cost.distance_cost
     astar2 = AStar(MDATestsTravelDistToNearestLabHeuristic,
-                   open_criterion=lambda c: sum(map(get_dist_cost, c.traverse_back_to_root())) <= max_distance_cost)
+                   open_criterion=lambda c: c.cost.distance_cost <= max_distance_cost)
     res = astar2.solve_problem(moderate_mda_problem_with_tests_travel_dist_cost)
     print(res)
 
@@ -334,14 +333,14 @@ def mda_problem_anytime_astar_experiments():
 
 def run_all_experiments():
     print('Running all experiments')
-    # toy_map_problem_experiments()
-    # basic_mda_problem_experiments()
-    # mda_problem_with_astar_experiments()
-    # mda_problem_with_weighted_astar_experiments()
-    # monetary_cost_objectives_mda_problem_experiments()
-    multiple_objectives_mda_problem_experiments()
-    # mda_problem_with_astar_epsilon_experiments()
-    # mda_problem_anytime_astar_experiments()
+    #toy_map_problem_experiments()
+    #basic_mda_problem_experiments()
+    #mda_problem_with_astar_experiments()
+    mda_problem_with_weighted_astar_experiments()
+    #monetary_cost_objectives_mda_problem_experiments()
+    #multiple_objectives_mda_problem_experiments()
+    #mda_problem_with_astar_epsilon_experiments()
+    #mda_problem_anytime_astar_experiments()
 
 
 if __name__ == '__main__':

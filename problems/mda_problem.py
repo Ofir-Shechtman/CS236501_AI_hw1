@@ -235,7 +235,6 @@ class MDAProblem(GraphProblem):
                 tests_transferred_to_lab=tests_transferred_to_lab,
                 nr_matoshim_on_ambulance=nr_matoshim_on_ambulance,
                 visited_labs=visited_labs)
-
             yield OperatorResult(successor_state=mda_state,
                                  operator_cost=self.get_operator_cost(state_to_expand, mda_state),
                                  operator_name=junction_name)
