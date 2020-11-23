@@ -84,9 +84,9 @@ def run_astar_for_weights_in_range(heuristic_type: HeuristicFunctionType, proble
     #     Don't forget to pass `max_nr_states_to_expand` to the AStar c'tor.
     #  3. Call the function `plot_distance_and_expanded_wrt_weight_figure()`
     #     with these 3 generated lists.
-    g_cost_list = []
-    nr_expanded_states_list = []
-    weight_list = []
+    #g_cost_list = []
+    #nr_expanded_states_list = []
+    #weight_list = []
     res_list = []
     for w in np.linspace(low_heuristic_weight, high_heuristic_weight, n):
         astar = AStar(heuristic_type, heuristic_weight=w, max_nr_states_to_expand=max_nr_states_to_expand)
@@ -259,9 +259,9 @@ def multiple_objectives_mda_problem_experiments():
     # Ex.35
     # TODO: create an instance of `AStar` with the `MDATestsTravelDistToNearestLabHeuristic`,
     #       solve the `moderate_mda_problem_with_tests_travel_dist_cost` with it and print the results.
-    # astar = AStar(MDATestsTravelDistToNearestLabHeuristic)
-    # res = astar.solve_problem(moderate_mda_problem_with_tests_travel_dist_cost)
-    # print(res)
+    #astar = AStar(MDATestsTravelDistToNearestLabHeuristic)
+    #res = astar.solve_problem(moderate_mda_problem_with_tests_travel_dist_cost)
+    #print(res)
 
     # Ex.38
     # TODO: Implement the algorithm A_2 described in this exercise in the assignment instructions.
@@ -336,9 +336,9 @@ def run_all_experiments():
     #toy_map_problem_experiments()
     #basic_mda_problem_experiments()
     #mda_problem_with_astar_experiments()
-    mda_problem_with_weighted_astar_experiments()
+    #mda_problem_with_weighted_astar_experiments()
     #monetary_cost_objectives_mda_problem_experiments()
-    #multiple_objectives_mda_problem_experiments()
+    multiple_objectives_mda_problem_experiments()
     #mda_problem_with_astar_epsilon_experiments()
     #mda_problem_anytime_astar_experiments()
 
