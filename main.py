@@ -281,6 +281,7 @@ def multiple_objectives_mda_problem_experiments():
     astar = AStar(MDAMSTAirDistHeuristic)
     res = astar.solve_problem(moderate_mda_problem_with_distance_cost)
     optimal_distance_cost = res.solution_cost.distance_cost
+    print(f'DELETE ME: {optimal_distance_cost}')
     eps = 0.6
     max_distance_cost = (1 + eps) * optimal_distance_cost
     astar2 = AStar(MDATestsTravelDistToNearestLabHeuristic,
@@ -314,8 +315,10 @@ def mda_problem_with_astar_epsilon_experiments():
     #       Use focal_epsilon=0.23, and max_focal_size=40.
     #       Use within_focal_priority_function=within_focal_h_sum_priority_function. This function
     #        (defined just above) is internally using the `MDASumAirDistHeuristic`.
-    exit()  # TODO: remove!
-
+    astar_eps = AStarEpsilon(MDAMSTAirDistHeuristic, within_focal_priority_function=within_focal_h_sum_priority_function,
+                             focal_epsilon=0.23, max_focal_size=40)
+    res = astar_eps.solve_problem(small_mda_problem_with_distance_cost)
+    print(res)
 
 def mda_problem_anytime_astar_experiments():
     print()
@@ -338,8 +341,8 @@ def run_all_experiments():
     #mda_problem_with_astar_experiments()
     #mda_problem_with_weighted_astar_experiments()
     #monetary_cost_objectives_mda_problem_experiments()
-    multiple_objectives_mda_problem_experiments()
-    #mda_problem_with_astar_epsilon_experiments()
+    #multiple_objectives_mda_problem_experiments()
+    mda_problem_with_astar_epsilon_experiments()
     #mda_problem_anytime_astar_experiments()
 
 
